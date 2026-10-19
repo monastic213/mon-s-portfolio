@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ramon C. Banaag Jr. | Portfolio</title>
+  <meta name="description" content="Portfolio of Ramon C. Banaag Jr., an IT student from Cebu City working toward full stack development.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Navigation ===== -->
+  <header class="topbar">
+    <nav class="pill" id="nav" aria-label="Main">
+      <a href="#home" data-link="home">Home</a>
+      <a href="#about" data-link="about">About</a>
+      <a href="#skills" data-link="skills">Skills</a>
+      <a href="#projects" data-link="projects">Projects</a>
+      <a href="#contact" data-link="contact">Contact</a>
+    </nav>
+    <div class="topbar__tools">
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <button class="icon-btn" id="themeBtn" type="button">Dark mode</button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== Home ===== -->
+    <section id="home" class="hero container">
+      <div class="hero__text">
+        <p class="hero__tag">IT student · Cebu City</p>
+        <h1>Ramon C.<br>Banaag Jr.</h1>
+        <p class="hero__lead">I'm an information technology student learning web development. I like building tools that help people make clear decisions, especially about their future in tech.</p>
+        <div class="actions">
+          <a class="btn btn--solid" href="#projects">See my project</a>
+          <a class="btn btn--line" href="mailto:Rbanaags1@gmail.com">Email me</a>
+        </div>
+        <p class="hero__typing">Right now I'm <strong id="typed"></strong><span class="caret" aria-hidden="true">|</span></p>
+      </div>
+      <figure class="portrait">
+        <img src="images/profile.jpg" alt="Portrait of Ramon C. Banaag Jr.">
+      </figure>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section id="about" class="block container">
+      <h2 class="block__title">About me</h2>
+      <div class="block__body">
+        <p>I'm Ramon, a 21-year-old student from Cebu City. I'm building my web development skills through class projects, and I'm slowly learning until I become a full stack developer.</p>
+        <p>My most recent project is TechPath, a group research and development project for Cebu Eastern College. It showed me that a good system starts with understanding what its users are trying to decide.</p>
+        <dl class="facts">
+          <div><dt>Based in</dt><dd>Cebu City, Philippines</dd></div>
+          <div><dt>Focus</dt><dd>Web development, aiming for full stack</dd></div>
+          <div><dt>Interested in</dt><dd>Career guidance tools, databases, and clear interface design</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section id="skills" class="block container">
+      <h2 class="block__title">Skills</h2>
+      <div class="block__body skills">
+        <div class="card card--now">
+          <h3>What I can do now</h3>
+          <ul class="ticks">
+            <!-- Edit these so they match what you can honestly do -->
+            <li>Structure pages with HTML5 and style them with CSS3</li>
+            <li>Build basic responsive layouts</li>
+            <li>Write basic JavaScript</li>
+            <li>Work with a team and write research documents</li>
+          </ul>
+        </div>
+        <div class="card card--next">
+          <h3>What I'm still learning</h3>
+          <ul class="ticks">
+            <li>Django and Python for the backend</li>
+            <li>MySQL and database design</li>
+            <li>Git and publishing sites online</li>
+            <li>Accessibility, such as color contrast and screen readers</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section id="projects" class="block container">
+      <h2 class="block__title">Projects</h2>
+      <div class="block__body">
+        <article class="project">
+          <header class="project__head">
+            <h3>TechPath</h3>
+            <span class="badge">In development</span>
+          </header>
+          <p class="project__sub">An intelligent platform for career path discovery and decision support among aspiring IT professionals at Cebu Eastern College, Incorporated. Team capstone project of five.</p>
+          <p>Many IT students are unsure which specialization fits them. TechPath assesses a student's skills, interests, strengths, and goals, then recommends suitable career paths. Students can also compare careers and see which skills they still need to build.</p>
+
+          <h4>My contribution</h4>
+          <p>Co-author of the study's first three chapters: the problem and its scope, the objectives, and the framework. I also work with my four teammates on planning the career assessment, recommendation, and comparison features.</p>
+
+          <h4>Built with</h4>
+          <ul class="chips">
+            <li>Django</li><li>MySQL</li><li>HTML5</li><li>CSS3</li><li>JavaScript</li>
+          </ul>
+
+          <h4>Live link</h4>
+          <p class="muted">Not available yet</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="block container">
+      <h2 class="block__title">Contact</h2>
+      <div class="block__body">
+        <p>I'm open to learning opportunities, collaboration, and feedback on my work. The best way to reach me is by email.</p>
+        <div class="actions">
+          <a class="btn btn--solid" href="mailto:Rbanaags1@gmail.com">Email Rbanaags1@gmail.com</a>
+          <button class="btn btn--line" id="copyBtn" type="button">Copy email address</button>
+        </div>
+        <p class="muted copy-msg" id="copyMsg" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">&copy; 2026 Ramon C. Banaag Jr.</footer>
+  <script src="script.js"></script>
+</body>
+</html>

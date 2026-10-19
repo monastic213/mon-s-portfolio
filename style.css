@@ -1,0 +1,439 @@
+/* ==========================================================================
+   Ramon C. Banaag Jr. | Portfolio stylesheet
+   Contents
+   1. Design tokens (colors, fonts, spacing)
+   2. Base and typography
+   3. Layout helpers
+   4. Navigation
+   5. Buttons
+   6. Home (hero)
+   7. Content sections (About, Skills, Projects, Contact)
+   8. Footer
+   9. Responsive rules
+   10. Accessibility
+   ========================================================================== */
+
+
+/* 1. Design tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Light theme (default) */
+  --bg:        #f4f1ea;
+  --surface:   #ffffff;
+  --text:      #17231f;
+  --muted:     #55645e;
+  --line:      #d9d4c7;
+  --accent:    #0f6b5c;   /* forest teal */
+  --accent-ink:#ffffff;   /* text on accent */
+  --warm:      #e4572e;   /* coral highlight */
+  --soft:      #e2efe9;   /* tinted panel */
+
+  --font-head: "Sora", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+
+  --radius:    14px;
+  --width:     1000px;
+}
+
+:root[data-theme="dark"] {
+  --bg:        #121a17;
+  --surface:   #1a2521;
+  --text:      #eef3f0;
+  --muted:     #a4b5ad;
+  --line:      #2c3b35;
+  --accent:    #5fd0b5;
+  --accent-ink:#0b1f19;
+  --warm:      #ff8a64;
+  --soft:      #1f2f29;
+}
+
+
+/* 2. Base and typography
+   -------------------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 1.0625rem/1.7 var(--font-body);
+  transition: background .25s, color .25s;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  line-height: 1.15;
+  margin: 0;
+}
+
+p { margin: 0 0 1rem; }
+a { color: inherit; }
+.muted { color: var(--muted); }
+
+
+/* 3. Layout helpers
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--width);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* Each content section: title on the left, content on the right */
+.block {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  padding-block: 70px;
+  border-top: 1px solid var(--line);
+}
+
+.block__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  position: sticky;
+  top: 90px;
+  align-self: start;
+}
+
+.block__title::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 6px;
+  margin-bottom: 14px;
+  background: var(--warm);
+  border-radius: 3px;
+}
+
+
+/* 4. Navigation
+   -------------------------------------------------------------------------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  pointer-events: none;          /* let clicks pass through the empty bar area */
+}
+
+.topbar > * { pointer-events: auto; }
+
+.pill {
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgb(0 0 0 / .07);
+}
+
+.pill a {
+  padding: 7px 16px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: .95rem;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+
+.pill a:hover { color: var(--text); }
+
+.pill a.active {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.topbar__tools { display: flex; gap: 8px; }
+
+.icon-btn {
+  padding: 9px 16px;
+  font: 700 .875rem var(--font-body);
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.icon-btn:hover { border-color: var(--accent); }
+
+.menu-btn { display: none; }
+
+
+/* 5. Buttons
+   -------------------------------------------------------------------------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font: 700 1rem var(--font-body);
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .15s, background .2s;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn--solid { background: var(--accent); color: var(--accent-ink); }
+.btn--line  { background: transparent;   color: var(--accent); }
+
+
+/* 6. Home (hero)
+   -------------------------------------------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 48px;
+  padding-block: 50px 80px;
+}
+
+.hero__tag {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 5px 14px;
+  background: var(--soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: .9rem;
+  border-radius: 999px;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+
+.hero__lead {
+  max-width: 34em;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+.hero__typing { margin-top: 26px; color: var(--muted); }
+.hero__typing strong { color: var(--text); }
+
+.caret { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Portrait: rounded square with an offset color block behind it */
+.portrait {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 320px);
+  margin: 0;
+}
+
+.portrait::before {
+  content: "";
+  position: absolute;
+  inset: 18px -18px -18px 18px;
+  background: var(--warm);
+  border-radius: 36px;
+}
+
+.portrait img {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 36px;
+  border: 4px solid var(--bg);
+}
+
+
+/* 7. Content sections
+   -------------------------------------------------------------------------- */
+
+/* About: quick facts */
+.facts {
+  display: grid;
+  gap: 14px;
+  margin: 28px 0 0;
+  padding: 22px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.facts dt { font-weight: 700; }
+.facts dd { margin: 0; color: var(--muted); }
+
+/* Skills: two filled cards */
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  padding: 26px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.card--now  { background: var(--soft); border-color: transparent; }
+.card h3    { font-size: 1.15rem; margin-bottom: 16px; }
+
+.ticks { margin: 0; padding: 0; list-style: none; }
+
+.ticks li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 10px;
+}
+
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .6em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.card--next .ticks li::before {
+  background: transparent;
+  border: 2px solid var(--warm);   /* hollow dot = still in progress */
+}
+
+/* Projects */
+.project {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--warm);
+  border-radius: var(--radius);
+}
+
+.project__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.project h3 { font-size: 1.7rem; }
+.project h4 { margin: 22px 0 6px; font-size: 1rem; }
+.project__sub { color: var(--muted); }
+
+.badge {
+  padding: 3px 12px;
+  background: var(--soft);
+  color: var(--accent);
+  font-size: .85rem;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: 4px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+/* Contact */
+.copy-msg { min-height: 1.7em; margin-top: 14px; }
+
+
+/* 8. Footer
+   -------------------------------------------------------------------------- */
+.footer {
+  padding-block: 28px 36px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+
+/* 9. Responsive rules
+   -------------------------------------------------------------------------- */
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; padding-top: 30px; }
+  .portrait { order: -1; width: min(70%, 260px); margin-bottom: 18px; }
+
+  .block { grid-template-columns: 1fr; gap: 20px; padding-block: 50px; }
+  .block__title { position: static; }
+
+  .skills { grid-template-columns: 1fr; }
+
+  /* Collapsible menu */
+  .topbar { flex-wrap: wrap; justify-content: space-between; }
+  .menu-btn { display: inline-block; }
+  .pill {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    border-radius: var(--radius);
+  }
+  .pill.open { display: flex; }
+}
+
+
+/* 10. Accessibility
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: -999px;
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  z-index: 20;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: 8px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--warm);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .caret { animation: none; }
+  .btn { transition: none; }
+}
